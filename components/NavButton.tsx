@@ -12,7 +12,7 @@ type navLinkInfo = {
 const NavButton:FC<navLinkInfo> = ({url, key, children}) => {
     return(
         <>
-            <Link href={url} key={key}>{children}</Link>
+            <Link href={url} key={key} shallow={true}>{children}</Link>
         </>
     )
 };
