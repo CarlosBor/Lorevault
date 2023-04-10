@@ -5,6 +5,7 @@ import CardTable from '@/components/CardTable';
 import SearchBar from '@/components/SearchBar';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import {useRouter} from 'next/router';
 
 //What I want now:
 
@@ -21,7 +22,7 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [cardInfo, setCardInfo] = useState(null);
   const [query, setQuery] = useState('');
-  
+
   async function fetchData(query:string){
     //This returns the raw response
     const cardInfoQuery = await fetch(`/api/product_test?productId=${query}`);
@@ -29,14 +30,15 @@ export default function Home() {
     const cardInfoQueryJson = await cardInfoQuery.json();
     setCardInfo(cardInfoQueryJson.products);
   }
+
   useEffect(()=>{
     fetchData(query);
-    console.log(query, "the use effect");
   },[query]);
   
   const grabSearchValue = (value: string)=>{
     setQuery(value);
   }
+
   return (
     <>
       <Head>

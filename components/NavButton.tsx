@@ -5,14 +5,13 @@ import Link from 'next/link';
 //React 17 and below used to allow for implicit children
 type navLinkInfo = {
     url: string,
-    key: number,
     children: string
 }
 
-const NavButton:FC<navLinkInfo> = ({url, key, children}) => {
+const NavButton:FC<navLinkInfo> = ({url, children}) => {
     return(
         <>
-            <Link href={url} key={key} shallow={true}>{children}</Link>
+            <Link href={url} shallow={true}>{children}</Link>
         </>
     )
 };

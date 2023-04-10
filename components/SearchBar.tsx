@@ -10,6 +10,7 @@ export default function SearchBar(props:SearchBarProps){
 
 
     const buildQuery = (query:string) => `/api/search?q=${query}`;
+
     const onChange = useCallback((event: ChangeEvent<HTMLInputElement>)=>{
         const query = event.target.value;
         setQuery(query);
