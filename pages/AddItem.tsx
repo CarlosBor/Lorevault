@@ -2,19 +2,22 @@ import {useEffect} from 'react';
 
 const AddItem = () =>{
     //In the simplest form, this would go ahead and grab info from those fields and just chuck it into the database
-    const handleSubmit = () => {
+    const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
+        const form = event.target as HTMLFormElement;
+        //This grabs all the data from the forms and puts it in a special object meant to be used for sending
+        const formData = new FormData(form);
+        const formDataObject = Object.fromEntries(formData.entries());
+        sendData(formDataObject);
     }
 
     async function sendData(payload:object){
         //This returns the raw response
         const cardInfoQuery = await fetch(`/api/addEntryToCollection`, {
             method: "POST",
-            body: JSON.stringify({
-                //Here goes the object
-            }),
+            body: JSON.stringify(payload)
         });
-        console.log(cardInfoQuery);
       }
 
     return (
@@ -30,7 +33,7 @@ const AddItem = () =>{
                 </select>
                 <input type="text" name="name" id="name" />
                 <textarea name="description" id="description" cols={30} rows={10}></textarea>
-                <input type="submit" value="Enviar Contenido" />
+                <button type="submit" value="Enviar Contenido"> TextoBoton</button>
             </form>
         </div>
     )

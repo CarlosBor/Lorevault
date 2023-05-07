@@ -1,16 +1,13 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router';
 import styles from './index.module.css';
 import NavMenu from '@/components/NavMenu';
 import CardTable from '@/components/CardTable';
 import SearchBar from '@/components/SearchBar';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import {useRouter} from 'next/router';
 
 //What I want now:
-
-//What I want is functional DB calls
-//Cheers I have funciontal DB calls!
 
 //Then I can filter those results
 //Cheers I know how to filter results!
@@ -20,15 +17,26 @@ import {useRouter} from 'next/router';
 //THEN I can add items to those DB entries
 //THEN I can add a header to navigate the site
 export default function Home() {
-  const [cardInfo, setCardInfo] = useState(null);
+  const [cardInfo, setCardInfo] = useState([]);
   const [query, setQuery] = useState('');
 
+  //This is how I make the component read the query URL.
+  //Make a "create link" button and use this to share.
+  //Different type of post ( maps, chars etc) may use a special, second filter.
+  const router = useRouter();
+  console.log(router.query);
+  
   async function fetchData(query:string){
     //This returns the raw response
-    const cardInfoQuery = await fetch(`/api/product_test?productId=${query}`);
+    const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}`);
+    //This is a query with a search parameter, for future reference
+    //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
+
     //This parses it into a more readable object
     const cardInfoQueryJson = await cardInfoQuery.json();
-    setCardInfo(cardInfoQueryJson.products);
+    console.log(cardInfoQueryJson, "From Index");
+    //It crashes. The problem is that reactjs doesn't play well with using objects in useState
+    setCardInfo(cardInfoQueryJson);
   }
 
   useEffect(()=>{
@@ -55,7 +63,7 @@ export default function Home() {
         </div>
       <main className={styles.main}>
         <NavMenu/> 
-        <CardTable products={cardInfo}/>
+        <CardTable cardInfo={cardInfo}/>
       </main>
     </>
   )
