@@ -7,8 +7,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let { db } = await connectToDatabase();
     const LorevaultEntries = await db.collection("LorevaultEntries");
     const result = await LorevaultEntries.insertOne(parsedRequest);
-    console.log(parsedRequest);
-    console.log(result);
     res.status(200).json(result);
     
 }

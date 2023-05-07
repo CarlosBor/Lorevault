@@ -17,33 +17,38 @@ import { useState, useEffect } from 'react';
 //THEN I can add items to those DB entries
 //THEN I can add a header to navigate the site
 export default function Home() {
-  const [cardInfo, setCardInfo] = useState([]);
+  const router = useRouter();
   const [query, setQuery] = useState('');
+  const [cardInfo, setCardInfo] = useState([]);
+
+//  const [defaultQuery, setDefaultQuery] = useState(router.query.searchToken);
 
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
-  //Different type of post ( maps, chars etc) may use a special, second filter.
-  const router = useRouter();
-  console.log(router.query);
-  
-  async function fetchData(query:string){
-    //This returns the raw response
-    const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}`);
-    //This is a query with a search parameter, for future reference
-    //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
+  //Different type of post ( maps, chars etc) may use a special, second filter. Radiobutton
+    const fetchData = async (query:string) => {
+      //This returns the raw response
+      const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}`);
+      //This is a query with a search parameter, for future reference
+      //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
 
-    //This parses it into a more readable object
-    const cardInfoQueryJson = await cardInfoQuery.json();
-    console.log(cardInfoQueryJson, "From Index");
-    //It crashes. The problem is that reactjs doesn't play well with using objects in useState
-    setCardInfo(cardInfoQueryJson);
-  }
+      //This parses it into a more readable object
+      const cardInfoQueryJson = await cardInfoQuery.json();
+      //It crashes. The problem is that reactjs doesn't play well with using objects in useState
+      setCardInfo(cardInfoQueryJson);
+    }
 
+  //Perform query when data changes
   useEffect(()=>{
     fetchData(query);
   },[query]);
+
+  //Load URL params as query on page load
+  useEffect(()=>{
+    setQuery(router.query.searchToken?.toString() || '');
+  },[router.query]);
   
-  const grabSearchValue = (value: string)=>{
+  const grabSearchValue = (value: string) => {
     setQuery(value);
   }
 
@@ -57,7 +62,7 @@ export default function Home() {
       </Head>
       <div className={styles.header}>
           <h2>Lorevault</h2>
-          <SearchBar sendSearchValue={grabSearchValue}/>
+          <SearchBar sendSearchValue={grabSearchValue} initialValue={query}/>
           <Link href="/AddItem">Add Item</Link>
           <span>AccStuff</span>
         </div>

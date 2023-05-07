@@ -13,7 +13,6 @@ interface LorevaultObject{
 }
 
 const CardTable = (data: CardTableProps) => {
-    console.log(data, "From CardTable");
     const arrayData = data.cardInfo ?? [];
     const contents = arrayData?.map((data:LorevaultObject, index:number)=>{
         return <CardSnippet infoArray={[data.name, data.description]} key={index}/>
