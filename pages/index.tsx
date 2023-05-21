@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import styles from './index.module.css';
-import NavMenu from '@/components/NavMenu';
+import FilterMenu from '@/components/FilterMenu';
 import CardTable from '@/components/CardTable';
 import SearchBar from '@/components/SearchBar';
 import Link from 'next/link';
@@ -9,19 +9,16 @@ import { useState, useEffect } from 'react';
 
 //What I want now:
 
-//Then I can filter those results
-//Cheers I know how to filter results!
-//
+//THEN I can make the elements of the menu do DB calls  <---- IM HERE
+//Turn the side menu into a checkbox that filters results 
 
-//THEN I can make the elements of the menu do DB calls
 //THEN I can add items to those DB entries
 //THEN I can add a header to navigate the site
 export default function Home() {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [cardInfo, setCardInfo] = useState([]);
-
-//  const [defaultQuery, setDefaultQuery] = useState(router.query.searchToken);
+  const [filteredArray, setFilteredArray] = useState<string[]>();
 
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
@@ -31,7 +28,6 @@ export default function Home() {
       const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}`);
       //This is a query with a search parameter, for future reference
       //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
-
       //This parses it into a more readable object
       const cardInfoQueryJson = await cardInfoQuery.json();
       //It crashes. The problem is that reactjs doesn't play well with using objects in useState
@@ -48,6 +44,15 @@ export default function Home() {
     setQuery(router.query.searchToken?.toString() || '');
   },[router.query]);
   
+  //Generate url with params from current search parameters
+  const generateLink = () =>{
+    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_CURRENT_URL}?searchToken=${query}`)
+  }
+
+  const grabFilteredArray = (value:string[]) =>{
+    setFilteredArray(value);
+  }
+
   const grabSearchValue = (value: string) => {
     setQuery(value);
   }
@@ -62,14 +67,15 @@ export default function Home() {
       </Head>
       <div className={styles.header}>
           <h2>Lorevault</h2>
-          <SearchBar sendSearchValue={grabSearchValue} initialValue={query}/>
+          <SearchBar sendSearchValue={grabSearchValue} initialValue={query} generateLink={generateLink}/>
           <Link href="/AddItem">Add Item</Link>
           <span>AccStuff</span>
         </div>
       <main className={styles.main}>
-        <NavMenu/> 
+        <FilterMenu sendFilteredArray={grabFilteredArray}/> 
         <CardTable cardInfo={cardInfo}/>
       </main>
+      <p>{filteredArray}</p>
     </>
   )
 }

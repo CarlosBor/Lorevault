@@ -4,19 +4,20 @@ import styles from './searchBar.module.css';
 
 interface SearchBarProps{
     sendSearchValue: (Function);
+    generateLink: (Function);
     initialValue: string;
-}
+} 
 
-export default function SearchBar(props:SearchBarProps){
+const SearchBar = (props:SearchBarProps) => {
     const [query, setQuery] = useState('');
+
+    const generateLink = () =>{
+        props.generateLink();
+    }
 
     useEffect(()=>{
         setQuery(props.initialValue);
     },[props.initialValue])
-
-    const searchBarToClipboard = () => {
-        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_CURRENT_URL}?searchToken=${query}`)
-    }
 
     const onChange = useCallback((event: ChangeEvent<HTMLInputElement>)=>{
         const query = event.target.value;
@@ -31,7 +32,9 @@ export default function SearchBar(props:SearchBarProps){
         <>
          <input type="text" onChange={onChange} value={query}/>
          <p>{query}</p>
-         <button className={styles.button} onClick={searchBarToClipboard}></button>
+         <button className={styles.button} onClick={generateLink}></button>
         </>
     )
 }
+
+export default SearchBar;
