@@ -9,6 +9,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let { db } = await connectToDatabase();
   //In here, the object inside the .find function filters results
   console.log(req.query, "This is the request query");
-  const entries = await db.collection("LorevaultEntries").find(req.query).toArray();
+  console.log(typeof req.query.categories);
+  let entries;
+  if(req.query.categories){
+    if (!Array.isArray(req.query.categories)){
+      req.query.categories = [req.query.categories];
+    }
+    entries = await db.collection("LorevaultEntries").find({name: req.query.name, infoType:{$in: req.query.categories}}).toArray();
+  }else{
+    entries = await db.collection("LorevaultEntries").find({name: req.query.name}).toArray();
+  }
+
   res.status(200).json(entries);
 }

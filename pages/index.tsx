@@ -10,8 +10,9 @@ import { useState, useEffect } from 'react';
 //What I want now:
 
 //THEN I can make the elements of the menu do DB calls  
-//THEN the side menu into a checkbox that filters results <---- IM HERE
-
+//THEN the side menu into a checkbox that filters results 
+//THEN clean up the DB, it ought to be "categories", not "infoType" <---- IM HERE
+//THEN make it so an empty name search returns all content and filter from there.
 //THEN I can add items to those DB entries
 //THEN I can add a header to navigate the site
 export default function Home() {
@@ -24,9 +25,15 @@ export default function Home() {
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
   //Different type of post ( maps, chars etc) may use a special, second filter. Radiobutton
-    const fetchData = async (query:string) => {
+    const fetchData = async (query:string, filteredArray:string[]) => {
       //This returns the raw response
-      const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}`);
+      let arrayString = "";
+      if (filteredArray){
+        for(let i=0;filteredArray.length>i;i++){
+          arrayString = `${arrayString}&categories=${filteredArray[i]}`;
+        }
+      }
+      const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}${arrayString}`);
       //This is a query with a search parameter, for future reference
       //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
       //This parses it into a more readable object
@@ -37,8 +44,8 @@ export default function Home() {
 
   //Perform query when data changes
   useEffect(()=>{
-    fetchData(query);
-  },[query]);
+    fetchData(query, filteredArray);
+  },[query, filteredArray]);
 
   //Load URL params as query on page load
   useEffect(()=>{
@@ -97,6 +104,7 @@ export default function Home() {
         <CardTable cardInfo={cardInfo}/>
       </main>
       <p>{filteredArray}</p>
+      <p>{query}</p>
     </>
   )
 }
