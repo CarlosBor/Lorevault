@@ -17,7 +17,7 @@ const CardTable = (data: CardTableProps) => {
     const contents = arrayData?.map((data:LorevaultObject, index:number)=>{
         return <CardSnippet infoArray={[data.name, data.description]} key={index}/>
     });
-
+    
     return (
         <div>
             {contents ?? ''}

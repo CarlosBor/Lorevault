@@ -48,7 +48,6 @@ const FilterMenu = (props:FilterMenuProps) =>{
         return filteredArray;
     }
 
-
     //Hay que bubblear al componente padre un array que sea el array categorias con los elementos en los que el otro array son positivos
     // https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/
     const handleFilterChange = (position:number) =>{
