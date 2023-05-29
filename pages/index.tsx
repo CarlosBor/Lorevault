@@ -9,8 +9,8 @@ import { useState, useEffect } from 'react';
 
 //What I want now:
 
-//THEN I can make the elements of the menu do DB calls  <---- IM HERE
-//Turn the side menu into a checkbox that filters results 
+//THEN I can make the elements of the menu do DB calls  
+//THEN the side menu into a checkbox that filters results <---- IM HERE
 
 //THEN I can add items to those DB entries
 //THEN I can add a header to navigate the site

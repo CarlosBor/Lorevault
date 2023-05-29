@@ -1,4 +1,3 @@
-import {FC} from 'react';
 import styles from './filterMenu.module.css';
 import { useState, useEffect, useRef } from 'react';
 
