@@ -17,8 +17,9 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const router = useRouter();
   const [query, setQuery] = useState('');
+  const [checkboxInit, setCheckboxInit] = useState<string[] | undefined[]>([]);
   const [cardInfo, setCardInfo] = useState([]);
-  const [filteredArray, setFilteredArray] = useState<string[]>();
+  const [filteredArray, setFilteredArray] = useState<string[]>([]);
 
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
@@ -42,11 +43,31 @@ export default function Home() {
   //Load URL params as query on page load
   useEffect(()=>{
     setQuery(router.query.searchToken?.toString() || '');
+    let categoriesToArray = Array.isArray(router.query.categories) ? router.query.categories : [router.query.categories];
+    // @ts-ignore
+    //The TS error here indicates that checkboxInit can't handle a lone string, yet per the line above it should never, ever get anything but an array.
+    //It's literally checking if it's an array and making it one if it returns false. TS mistake?
+    setCheckboxInit(categoriesToArray);
   },[router.query]);
   
   //Generate url with params from current search parameters
   const generateLink = () =>{
-    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_CURRENT_URL}?searchToken=${query}`)
+    let queryString = `${process.env.NEXT_PUBLIC_CURRENT_URL}`;
+    if(query){
+      queryString = `${queryString}?searchToken=${query}`;
+    }
+    if(filteredArray.length>0){
+      let queryArraySection = "";
+      for(let i=0; i<filteredArray.length;i++){
+        queryArraySection = `${queryArraySection}&categories=${filteredArray[i]}`;
+      }
+      if (!query){
+        //If there is no query text then the first instance of & ought to be an ? to specify params in the query
+        queryArraySection = queryArraySection.replace('&', '?');
+      }
+      queryString = `${queryString}${queryArraySection}`;
+    }
+    navigator.clipboard.writeText(queryString);
   }
 
   const grabFilteredArray = (value:string[]) =>{
@@ -72,7 +93,7 @@ export default function Home() {
           <span>AccStuff</span>
         </div>
       <main className={styles.main}>
-        <FilterMenu sendFilteredArray={grabFilteredArray}/> 
+        <FilterMenu sendFilteredArray={grabFilteredArray} checkboxInit={checkboxInit}/> 
         <CardTable cardInfo={cardInfo}/>
       </main>
       <p>{filteredArray}</p>

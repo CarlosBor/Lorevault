@@ -1,9 +1,10 @@
 import {FC} from 'react';
 import styles from './filterMenu.module.css';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface FilterMenuProps{
     sendFilteredArray: (Function);
+    checkboxInit: string[] | undefined[];
 }
 
 const categorias = ["Mapas", "Personajes", "Objetos", "Criaturas", "Hechizos", "Misc"];
@@ -13,7 +14,28 @@ const FilterMenu = (props:FilterMenuProps) =>{
         new Array(categorias.length).fill(false)
     );
     const [filteredArray, setFilteredArray] = useState<string[]>();
+    let proppedSendFilteredArray = props.sendFilteredArray;
 
+    useEffect(()=>{
+        setFilteredArray(filterCategories(categorias, checkedState));
+    }, [checkedState])
+
+    useEffect(()=>{
+        proppedSendFilteredArray(filteredArray);
+    }, [filteredArray, proppedSendFilteredArray])
+
+    useEffect(()=>{
+        console.log(props.checkboxInit);
+        let checkboxInitArray = new Array(categorias.length).fill(false);
+        for(let i=0; i<props.checkboxInit.length;i++){
+            if (props.checkboxInit[i] !== undefined){
+                //@ts-ignore
+                //Ts insists that props.checkboxInit[i] below can be undefined
+               checkboxInitArray[categorias.indexOf(props.checkboxInit[i])] = true;
+            }
+        }
+        setCheckedState(checkboxInitArray);
+    },[props.checkboxInit])
 
     //Esto tiene que ser un useEffect en lugar de esta desgracia
     const filterCategories = (catArray:string[], boolArray:boolean[]) => {
@@ -34,20 +56,17 @@ const FilterMenu = (props:FilterMenuProps) =>{
             index === position ? !item : item
         );
         setCheckedState(updatedCheckedState);
-        setFilteredArray(filterCategories(categorias, checkedState));
-        props.sendFilteredArray(filteredArray);
     }
 
     const menuCategorias = categorias.map((nombre, index)=>{
         return (<label key={index}>
-        <input type="checkbox" onChange={() => handleFilterChange(index)} key={index}/>{nombre}</label>
+        <input type="checkbox" checked={checkedState[index]} onChange={() => handleFilterChange(index)} key={index}/>{nombre}</label>
         )
     });
     
     return(
         <div className={styles.navMenu}>
             {menuCategorias}
-            <p>{checkedState}</p>
         </div>
     )
 }

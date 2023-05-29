@@ -22,10 +22,7 @@ const SearchBar = (props:SearchBarProps) => {
     const onChange = useCallback((event: ChangeEvent<HTMLInputElement>)=>{
         const query = event.target.value;
         setQuery(query);
-        //Si hay texto en el campo...
-        if (query.length) {
-            props.sendSearchValue(query);
-        }
+        props.sendSearchValue(query);
     },[])
 
     return(
