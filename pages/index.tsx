@@ -11,9 +11,11 @@ import { useState, useEffect } from 'react';
 
 //THEN I can make the elements of the menu do DB calls  
 //THEN the side menu into a checkbox that filters results 
-//THEN clean up the DB, it ought to be "categories", not "infoType" <---- IM HERE
-//THEN make it so an empty name search returns all content and filter from there.
+//THEN clean up the DB, it ought to be "categories", not "infoType" 
+//THEN make it so an empty name search returns all content and filter from there. 
 //THEN I can add items to those DB entries
+//THEN I can improve the menu to add stuff so it's not a weird different page? <---- IM HERE
+//THEN I have to control the form. Prevent empty fields, add error messages.
 //THEN I can add a header to navigate the site
 export default function Home() {
   const router = useRouter();

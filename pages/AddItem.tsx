@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import styles from './addItem.module.css';
 
 const AddItem = () =>{
     //In the simplest form, this would go ahead and grab info from those fields and just chuck it into the database
@@ -21,19 +22,24 @@ const AddItem = () =>{
       }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <select name="categories" id="categories">
-                    <option value="Mapas">Mapas</option>
-                    <option value="Personajes">Personajes</option>
-                    <option value="Objetos">Objetos</option>
-                    <option value="Criaturas">Criaturas</option>
-                    <option value="Hechizos">Hechizos</option>
-                    <option value="Misc">Misc</option>
-                </select>
-                <input type="text" name="name" id="name" />
-                <textarea name="description" id="description" cols={30} rows={10}></textarea>
-                <button type="submit" value="Enviar Contenido"> TextoBoton</button>
+        <div className={styles.addItemContainer}>
+            <form onSubmit={handleSubmit} className={styles.addItemForm}>
+                <label>Categoria:
+                    <select name="categories" id="categories">
+                        <option value="Mapas">Mapas</option>
+                        <option value="Personajes">Personajes</option>
+                        <option value="Objetos">Objetos</option>
+                        <option value="Criaturas">Criaturas</option>
+                        <option value="Hechizos">Hechizos</option>
+                        <option value="Misc">Misc</option>
+                    </select>
+                </label>
+                <label>Nombre: 
+                    <input type="text" name="name" id="name" />
+                </label>
+                <label>Descripcion:<textarea name="description" id="description" cols={30} rows={10}></textarea>
+                </label>
+                <button type="submit" value="Enviar Contenido">Añadir</button>
             </form>
         </div>
     )
