@@ -23,7 +23,7 @@ const AddItem = () =>{
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <select name="infoType" id="infoType">
+                <select name="categories" id="categories">
                     <option value="Mapas">Mapas</option>
                     <option value="Personajes">Personajes</option>
                     <option value="Objetos">Objetos</option>
