@@ -4,7 +4,8 @@ import styles from './index.module.css';
 import FilterMenu from '@/components/FilterMenu';
 import CardTable from '@/components/CardTable';
 import SearchBar from '@/components/SearchBar';
-import Link from 'next/link';
+import CardFullScreen from '@/components/CardFullScreen';
+import AddItem from '@/components/AddItem';
 import { useState, useEffect } from 'react';
 
 //What I want now:
@@ -14,15 +15,18 @@ import { useState, useEffect } from 'react';
 //THEN clean up the DB, it ought to be "categories", not "infoType" 
 //THEN make it so an empty name search returns all content and filter from there. 
 //THEN I can add items to those DB entries
-//THEN I can improve the menu to add stuff so it's not a weird different page? <---- IM HERE
-//THEN I have to control the form. Prevent empty fields, add error messages.
-//THEN I can add a header to navigate the site
+//THEN I can improve the menu to add stuff so it's not a weird different page? 
+//THEN I have to remove AddItem from the pages, since it's not a component.
+//THEN I have to control the form. Prevent empty fields, add error messages. <---- IM HERE
+//THEN I can add a header to navigate the site (Lol, Lmao even)
+
 export default function Home() {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [checkboxInit, setCheckboxInit] = useState<string[] | undefined[]>([]);
   const [cardInfo, setCardInfo] = useState([]);
   const [filteredArray, setFilteredArray] = useState<string[]>([]);
+  const [displayAddCard, setDisplayAddCard] = useState<boolean>(false);
 
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
@@ -87,6 +91,11 @@ export default function Home() {
     setQuery(value);
   }
 
+  const addCardToggle = () =>{
+    setDisplayAddCard(!displayAddCard);
+    console.log(displayAddCard);
+  }
+
   return (
     <>
       <Head>
@@ -98,12 +107,17 @@ export default function Home() {
       <div className={styles.header}>
           <h2>Lorevault</h2>
           <SearchBar sendSearchValue={grabSearchValue} initialValue={query} generateLink={generateLink}/>
-          <Link href="/AddItem">Add Item</Link>
+          <button onClick={addCardToggle}>ADDCARD</button>
           <span>AccStuff</span>
         </div>
       <main className={styles.main}>
         <FilterMenu sendFilteredArray={grabFilteredArray} checkboxInit={checkboxInit}/> 
         <CardTable cardInfo={cardInfo}/>
+        {displayAddCard && 
+        <CardFullScreen addCardToggle={addCardToggle}>
+          <AddItem/>
+        </CardFullScreen>
+        }
       </main>
       <p>{filteredArray}</p>
       <p>{query}</p>
