@@ -17,8 +17,8 @@ import { useState, useEffect } from 'react';
 //THEN I can add items to those DB entries
 //THEN I can improve the menu to add stuff so it's not a weird different page? 
 //THEN I have to remove AddItem from the pages, since it's not a component.
-//THEN I have to control the form. Prevent empty fields, add error messages. <---- IM HERE
-//THEN I can add a header to navigate the site (Lol, Lmao even)
+//THEN I have to control the form. Prevent empty fields, add error messages. 
+//THEN I can add a header to navigate the site (Lol, Lmao even) <---- IM HERE
 
 export default function Home() {
   const router = useRouter();
