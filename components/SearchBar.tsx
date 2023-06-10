@@ -27,9 +27,8 @@ const SearchBar = (props:SearchBarProps) => {
 
     return(
         <>
-         <input type="text" onChange={onChange} value={query}/>
-         <p>{query}</p>
-         <button className={styles.button} onClick={generateLink}></button>
+         <input className={styles.searchBox} type="text" onChange={onChange} value={query}/>
+         <button className={styles.button} onClick={generateLink}>📋</button>
         </>
     )
 }

@@ -1,0 +1,11 @@
+.cardSnippet{
+    background-color:brown;
+    margin:5px;
+    border-radius:5px;
+    padding:15px;
+    color:rgba(230,230,230,1);
+}
+
+.cardSnippetName{
+    margin-bottom:5px;
+}

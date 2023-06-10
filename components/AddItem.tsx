@@ -34,7 +34,7 @@ const AddItem = () =>{
     const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.target as HTMLFormElement;
-        if(handleValidation()){
+        if(!handleValidation()){
             console.log("Validation happens");
             return;
         }
@@ -54,9 +54,9 @@ const AddItem = () =>{
 
     return (
         <div className={styles.addItemContainer}>
-            <form onSubmit={handleSubmit} className={styles.addItemForm}>
+            <form className={styles.addItemForm} onSubmit={handleSubmit}>
                 <label>Categoria:
-                    <select name="categories" id="categories">
+                    <select className={styles.inputField} name="categories" id="categories">
                         <option value="Mapas">Mapas</option>
                         <option value="Personajes">Personajes</option>
                         <option value="Objetos">Objetos</option>
@@ -65,15 +65,16 @@ const AddItem = () =>{
                         <option value="Misc">Misc</option>
                     </select>
                 </label>
-                <label><p>Nombre:</p>
+                <label>Nombre:
                     {nameError && <p>{nameError}</p>}
-                    <input type="text" name="name" id="name" value={name} onChange={nameChangeHandler} required/>
                 </label>
-                <label><p>Descripcion:</p>
+                    <input className={styles.inputField} type="text" name="name" id="name" value={name} onChange={nameChangeHandler} placeholder="Nombre" required/>
+                <label>Descripcion:
                     {descriptionError && <p>{descriptionError}</p>}
-                    <textarea name="description" id="description" cols={30} rows={10} value={description} onChange={descriptionChangeHandler} required></textarea>
                 </label>
-                <button type="submit" value="Enviar Contenido">Añadir</button>
+                    <textarea className={styles.inputField} name="description" id="description" cols={30} rows={10} value={description} onChange={descriptionChangeHandler} placeholder="Escriba aqui una descripcion" required></textarea>
+
+                <button className={styles.sendFormButton} type="submit" value="Enviar Contenido">Añadir</button>
             </form>
         </div>
     )

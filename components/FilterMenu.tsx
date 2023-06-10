@@ -58,7 +58,7 @@ const FilterMenu = (props:FilterMenuProps) =>{
 
     const menuCategorias = categorias.map((nombre, index)=>{
         return (<label key={index}>
-        <input type="checkbox" checked={checkedState[index]} onChange={() => handleFilterChange(index)} key={index}/>{nombre}</label>
+        <input type="checkbox" className={styles.checkBoxes} checked={checkedState[index]} onChange={() => handleFilterChange(index)} key={index}/>{nombre}</label>
         )
     });
     

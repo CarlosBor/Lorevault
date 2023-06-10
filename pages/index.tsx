@@ -105,10 +105,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.header}>
-          <h2>Lorevault</h2>
+          <h2 className={styles.logo}>Lorevault</h2>
           <SearchBar sendSearchValue={grabSearchValue} initialValue={query} generateLink={generateLink}/>
-          <button onClick={addCardToggle}>ADDCARD</button>
-          <span>AccStuff</span>
+          <button onClick={addCardToggle}>📓➕</button>
         </div>
       <main className={styles.main}>
         <FilterMenu sendFilteredArray={grabFilteredArray} checkboxInit={checkboxInit}/> 

@@ -8,3 +8,22 @@
     display:flex;
     flex-direction:column;
 }
+
+.inputField{
+    margin-bottom:15px;
+    border-radius:5px;
+}
+
+.sendFormButton{
+    font-size:25px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.addItemForm{
+    padding:15px;
+    border-color: rgb(153, 65, 65);
+    border-width:15px;
+    border-style:solid;
+    border-radius:15px;
+}
