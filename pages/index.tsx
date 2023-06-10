@@ -18,7 +18,13 @@ import { useState, useEffect } from 'react';
 //THEN I can improve the menu to add stuff so it's not a weird different page? 
 //THEN I have to remove AddItem from the pages, since it's not a component.
 //THEN I have to control the form. Prevent empty fields, add error messages. 
-//THEN I can add a header to navigate the site (Lol, Lmao even) <---- IM HERE
+//THEN I can add a header to navigate the site (Lol, Lmao even) 
+//THEN I can improve CSS
+//THEN I can work on the clickable card functionality <---- IM HERE - - - Right now I am querying the info of the specific element to a screen, but I have to make the component to display it.
+//THEN I can work on adding images
+//THEN maybe accounts but that's overdoing it
+
+
 
 export default function Home() {
   const router = useRouter();

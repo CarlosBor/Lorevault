@@ -17,6 +17,7 @@ const CardTable = (data: CardTableProps) => {
     const contents = arrayData?.map((data:LorevaultObject, index:number)=>{
         
         const cardContents = {
+            _id: data._id,
             name:data.name,
             description:data.description
         }
