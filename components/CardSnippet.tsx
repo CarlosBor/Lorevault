@@ -1,6 +1,7 @@
 import styles from './cardSnippet.module.css';
 import {useState} from 'react';
 import DetailCard from '@/components/DetailCard';
+import DetailedCardContent from '@/components/DetailedCardContent';
 
 interface CardSnippetProps{
     cardContents:CardContents,
@@ -18,7 +19,7 @@ const CardSnippet = (props:CardSnippetProps) => {
     
     const toggleFullView = () =>{
         console.log("this fires");
-        setFullView(!fullView);    
+        setFullView(!fullView);
     }
 
     //Array [ "This a map", "This is, indeed, a map" ]
@@ -37,7 +38,9 @@ const CardSnippet = (props:CardSnippetProps) => {
                 <h4 className={styles.cardSnippetName}>{props.cardContents.name}</h4>
                 <p>{description}</p>
             </div>
-            {fullView && <DetailCard id={id} toggleFullView={toggleFullView}></DetailCard>}
+            {fullView && <DetailCard toggleFullView={toggleFullView}>
+                    <DetailedCardContent id={id}/>
+                </DetailCard>}
             </>
         );
     

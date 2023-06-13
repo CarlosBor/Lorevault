@@ -1,5 +1,5 @@
 import styles from './filterMenu.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 
 interface FilterMenuProps{
     sendFilteredArray: (Function);
