@@ -21,8 +21,8 @@ import { useState, useEffect } from 'react';
 //THEN I can add a header to navigate the site (Lol, Lmao even) 
 //THEN I can improve CSS
 //THEN I can work on the clickable card functionality 
-//THEN I can style things even more because jesus christ it still looks awful <---- IM HERE - - - Right now I am querying the info of the specific element to a screen, but I have to make the component to display it.
-//THEN add error handling?
+//THEN I can style things even more because jesus christ it still looks awful
+//THEN add error handling?  <---- IM HERE
 //THEN I can work on adding images
 //THEN maybe accounts but that's overdoing it
 
