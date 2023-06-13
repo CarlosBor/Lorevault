@@ -3,7 +3,7 @@ import { useState, useEffect} from 'react';
 
 interface FilterMenuProps{
     sendFilteredArray: (Function);
-    checkboxInit: string[] | undefined[];
+    checkboxInit: (string | undefined)[];
 }
 
 const categorias = ["Mapas", "Personajes", "Objetos", "Criaturas", "Hechizos", "Misc"];
@@ -24,13 +24,10 @@ const FilterMenu = (props:FilterMenuProps) =>{
     }, [filteredArray, proppedSendFilteredArray])
 
     useEffect(()=>{
-        console.log(props.checkboxInit);
         let checkboxInitArray = new Array(categorias.length).fill(false);
         for(let i=0; i<props.checkboxInit.length;i++){
-            if (props.checkboxInit[i] !== undefined){
-                //@ts-ignore
-                //Ts insists that props.checkboxInit[i] below can be undefined
-               checkboxInitArray[categorias.indexOf(props.checkboxInit[i])] = true;
+            if (typeof props.checkboxInit[i] == "string"){
+               checkboxInitArray[categorias.indexOf(props.checkboxInit[i] as string)] = true;
             }
         }
         setCheckedState(checkboxInitArray);

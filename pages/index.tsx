@@ -6,6 +6,7 @@ import CardTable from '@/components/CardTable';
 import SearchBar from '@/components/SearchBar';
 import CardFullScreen from '@/components/CardFullScreen';
 import AddItem from '@/components/AddItem';
+import ErrorMessage from '@/components/ErrorMessage';
 import { useState, useEffect } from 'react';
 
 //What I want now:
@@ -22,25 +23,24 @@ import { useState, useEffect } from 'react';
 //THEN I can improve CSS
 //THEN I can work on the clickable card functionality 
 //THEN I can style things even more because jesus christ it still looks awful
-//THEN add error handling?  <---- IM HERE
+//THEN add error handling? 
+//THEN CLEANUP JESUS LORDY <---- IM HERE
 //THEN I can work on adding images
 //THEN maybe accounts but that's overdoing it
-
 
 
 export default function Home() {
   const router = useRouter();
   const [query, setQuery] = useState('');
-  const [checkboxInit, setCheckboxInit] = useState<string[] | undefined[]>([]);
+  const [checkboxInit, setCheckboxInit] = useState<(string | undefined)[]>([]);
   const [cardInfo, setCardInfo] = useState([]);
   const [filteredArray, setFilteredArray] = useState<string[]>([]);
   const [displayAddCard, setDisplayAddCard] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   //This is how I make the component read the query URL.
   //Make a "create link" button and use this to share.
-  //Different type of post ( maps, chars etc) may use a special, second filter. Radiobutton
     const fetchData = async (query:string, filteredArray:string[]) => {
-      //This returns the raw response
       let arrayString = "";
       if (filteredArray){
         for(let i=0;filteredArray.length>i;i++){
@@ -50,13 +50,14 @@ export default function Home() {
       const cardInfoQuery = await fetch(`/api/queryLorevault?name=${query}${arrayString}`);
       //This is a query with a search parameter, for future reference
       //    const cardInfoQuery = await fetch(`/api/queryLorevault?productId=${query}`);
-      //This parses it into a more readable object
+      //This parses it into a readable object
       const cardInfoQueryJson = await cardInfoQuery.json();
-      //It crashes. The problem is that reactjs doesn't play well with using objects in useState
+      if(cardInfoQueryJson.errorMessage){
+        setErrorMessage(cardInfoQueryJson.errorMessage);
+      }
       setCardInfo(cardInfoQueryJson);
     }
 
-  //Perform query when data changes
   useEffect(()=>{
     fetchData(query, filteredArray);
   },[query, filteredArray]);
@@ -65,9 +66,7 @@ export default function Home() {
   useEffect(()=>{
     setQuery(router.query.searchToken?.toString() || '');
     let categoriesToArray = Array.isArray(router.query.categories) ? router.query.categories : [router.query.categories];
-    // @ts-ignore
-    //The TS error here indicates that checkboxInit can't handle a lone string, yet per the line above it should never, ever get anything but an array.
-    //It's literally checking if it's an array and making it one if it returns false. TS mistake?
+    console.log(categoriesToArray);
     setCheckboxInit(categoriesToArray);
   },[router.query]);
   
@@ -101,7 +100,6 @@ export default function Home() {
 
   const addCardToggle = () =>{
     setDisplayAddCard(!displayAddCard);
-    console.log(displayAddCard);
   }
 
   return (
@@ -126,8 +124,7 @@ export default function Home() {
         </CardFullScreen>
         }
       </main>
-      <p>{filteredArray}</p>
-      <p>{query}</p>
+      {errorMessage && <ErrorMessage errorMessageText={errorMessage}/>}
     </>
   )
 }

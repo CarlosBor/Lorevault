@@ -25,7 +25,7 @@ const CardTable = (data: CardTableProps) => {
     });
     
     return (
-        <div>
+        <div className={styles.cardSnippetContainer}>
             {contents ?? ''}
         </div>
     )

@@ -4,21 +4,17 @@ import { connectToDatabase } from "../../lib/mongodb";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   interface SearchObject{
-    //Esto es una ñapa wtf is that any
-    name?: string | string[] | any;
-    categories?: string[] | any;
-} 
+    name?: {
+      $regex : string | string[];
+    }
+    categories?: {
+      $in: string[];
+    }
+  }
 
-  //This in here is just a variable to pass to the db calls
-  const {searchCriteria} = req.query;
+  const { db } = await connectToDatabase();
+  const searchObject:SearchObject = {};
 
-  let { db } = await connectToDatabase();
-  //In here, the object inside the .find function filters results
-  console.log(req.query, "This is the request query");
-
-  let searchObject:SearchObject = {};
-  let entries;
-  
   if(req.query.name){
     searchObject.name = {$regex : req.query.name};
   }
@@ -29,7 +25,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     searchObject.categories = {$in: req.query.categories};
   }
-  console.log(searchObject, "This is the search Object");
-  entries = await db.collection("LorevaultEntries").find(searchObject).toArray();
-  res.status(200).json(entries);
+  try{
+    const entries = await db.collection("LorevaultEntries").find(searchObject).toArray();
+    res.status(200).json(entries);
+  } catch(e){
+    res.status(500).json({ errorMessage: "An error occured." });
+  }
 }

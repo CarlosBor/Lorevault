@@ -8,5 +8,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const LorevaultEntries = await db.collection("LorevaultEntries");
     const result = await LorevaultEntries.insertOne(parsedRequest);
     res.status(200).json(result);
-    
 }

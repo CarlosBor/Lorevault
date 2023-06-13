@@ -4,11 +4,7 @@ import {ObjectId} from 'mongodb';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  interface SearchObject{
-    //Esto es una ñapa wtf is that any
-    id:string
-} 
-
+    //Ensuring query is a string
     let query;
     if(typeof req.query._id==="object"){
         query = req.query._id[0];
@@ -19,8 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let { db } = await connectToDatabase();
     //In here, the object inside the .find function filters results
     console.log(req.query, "This is the request query");
-    const objectId = new ObjectId(query); // replace 'your-id' with the actual ObjectId value
-    let entries;
-    entries = await db.collection("LorevaultEntries").findOne(objectId);
+    const objectId = new ObjectId(query);
+    const entries = await db.collection("LorevaultEntries").findOne(objectId);
     res.status(200).json(entries);
 }

@@ -8,7 +8,7 @@ interface ParentComponentProps {
     children?: React.ReactNode;
   }
 
-const CardFullScreen: React.FC<ParentComponentProps> = ({ addCardToggle, children }) => {
+const CardFullScreen = ({ addCardToggle, children }: ParentComponentProps) => {
 
     const dismiss = () =>{
         addCardToggle();
@@ -16,13 +16,11 @@ const CardFullScreen: React.FC<ParentComponentProps> = ({ addCardToggle, childre
 
     const dismissCard = (event: React.MouseEvent<HTMLDivElement>) =>{
         if(event.currentTarget != event.target ) return;
-        console.log("This ought to close");
         dismiss();
     }
 
     const dismissCardX = (event: React.MouseEvent<HTMLButtonElement>) =>{
         if(event.currentTarget != event.target ) return;
-        console.log("This ought to close with X");
         dismiss();
     }
 

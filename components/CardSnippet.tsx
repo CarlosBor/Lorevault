@@ -18,15 +18,10 @@ const CardSnippet = (props:CardSnippetProps) => {
     const [fullView, setFullView] = useState(false);
     
     const toggleFullView = () =>{
-        console.log("this fires");
         setFullView(!fullView);
     }
 
-    //Array [ "This a map", "This is, indeed, a map" ]
-    //This is the id in mongoDB for this element
     const id = props.cardContents._id;
-
-    console.log(props);
         let description = props.cardContents.description;
         if(description.length>200){
             description = description.substring(0,200)+"...";

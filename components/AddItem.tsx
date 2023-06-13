@@ -9,12 +9,10 @@ const AddItem = () =>{
     //Two-Way data binding
     const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
-        console.log(name);
     };
 
     const descriptionChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setDescription(event.target.value);
-        console.log(description);
     }
 
     const handleValidation = () => {
@@ -35,7 +33,6 @@ const AddItem = () =>{
         event.preventDefault();
         const form = event.target as HTMLFormElement;
         if(!handleValidation()){
-            console.log("Validation happens");
             return;
         }
         //This grabs all the data from the forms and puts it in a special object meant to be used for sending
