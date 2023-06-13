@@ -1,5 +1,6 @@
-import styles from './detailedCardContents.module.css';
+import styles from './detailedCardContent.module.css';
 import {useState, useEffect} from 'react';
+import Image from 'next/image';
 
 interface DetailedCardContentProps {
     id:string,
@@ -26,18 +27,28 @@ const DetailedCardContent: React.FC<DetailedCardContentProps> = ({id}) => {
         console.log(cardInfoQueryJson);
         //It crashes. The problem is that reactjs doesn't play well with using objects in useState
         setDetailedCardInfo(cardInfoQueryJson);
-      }
+    }
       
     useEffect(()=>{
         fetchData(id);
     },[id])
 
-    return (
-        <div>
-            <p>{detailedCardInfo && detailedCardInfo.name}</p>
-            <p>{detailedCardInfo && detailedCardInfo.description}</p>
+    if(detailedCardInfo){
+        return (
+            <div className={styles.cardDetailContainer}>
+            <p className={styles.fieldLabel}>Nombre: </p>
+            <p className={styles.fieldContent}>{detailedCardInfo.name}</p>
+            <p className={styles.fieldLabel}>Descripcion: </p>
+            <p className={styles.fieldContent}>{detailedCardInfo.description}</p>
         </div>
-    )
+        )
+    }else{
+        return(
+            <div className={styles.loadingGifWrapper}>
+                <Image src="/assets/loadingGear.gif" alt="A loading gif" width={250} height={250} className={styles.loadingGif}/>
+            </div>
+        )
+    }
 }
 
 export default DetailedCardContent;

@@ -26,7 +26,7 @@ const DetailCard: React.FC<ParentComponentProps> = ({children, toggleFullView}) 
     return (
         <div className={styles.screenCover} onClick={dismissCard}>
             <div className={styles.childDivCard}>
-                <button onClick={dismissCardX}>X</button>
+                <button className={styles.dismissButton} onClick={dismissCardX}>X</button>
                 <div className={styles.childDivContainer}>
                     {children && children}
                 </div>
