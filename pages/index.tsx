@@ -8,6 +8,9 @@ import CardFullScreen from '@/components/CardFullScreen';
 import AddItem from '@/components/AddItem';
 import ErrorMessage from '@/components/ErrorMessage';
 import { useState, useEffect } from 'react';
+import ParsedForm from '@/components/ParsedForm';
+import DynamicForm from '@/components/DynamicForm';
+import theFile from '@/public/assets/DiagForm.json';
 
 //What I want now:
 
@@ -110,6 +113,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ParsedForm/>
+      <DynamicForm data={theFile}/>
       <div className={styles.header}>
           <h2 className={styles.logo}>Lorevault</h2>
           <SearchBar sendSearchValue={grabSearchValue} initialValue={query} generateLink={generateLink}/>

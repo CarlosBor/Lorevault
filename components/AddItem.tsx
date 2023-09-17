@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import styles from './addItem.module.css';
+import diagForm from '@/public/assets/DiagForm.json';
 
 const AddItem = () =>{
     const [name, setName] = useState('');
@@ -54,11 +55,9 @@ const AddItem = () =>{
             <form className={styles.addItemForm} onSubmit={handleSubmit}>
                 <label>Categoria:
                     <select className={styles.inputField} name="categories" id="categories">
-                        <option value="Mapas">Mapas</option>
-                        <option value="Personajes">Personajes</option>
-                        <option value="Objetos">Objetos</option>
-                        <option value="Criaturas">Criaturas</option>
-                        <option value="Hechizos">Hechizos</option>
+                        <option value="Clientes">Clientes</option>
+                        <option value="Proveedores">Proveedores</option>
+                        <option value="Incidencias">Incidencias</option>
                         <option value="Misc">Misc</option>
                     </select>
                 </label>

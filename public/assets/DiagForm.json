@@ -1,0 +1,478 @@
+{
+    "Secciones":{
+        "Cabecera":{
+            "Tag": "Formulario del cliente",
+            "contents":{
+                "NombreTecnico":{
+                    "Tag": "Técnico de evaluación",
+                    "Datatype": "String"
+                },
+                "NumHistoria":{
+                    "Tag": "Nº Historia",
+                    "Datatype": "Number"
+                }
+            }
+        },
+        "DatosPersonales":{
+            "Tag":"Datos Personales",
+            "contents":{
+                "NombreApellidos":{
+                    "Tag": "Nombre y Apellidos",
+                    "Datatype": "String"
+                },
+                "FechaNacimiento":{
+                    "Tag": "Fecha de nacimiento",
+                    "Datatype": "Date"
+                },
+                "NumContacto":{
+                    "Tag": "Teléfono de contacto",
+                    "Datatype": "Number"
+                },
+                "Direccion":{
+                    "Tag": "Dirección",
+                    "Datatype": "String"
+                },
+                "Profesion":{
+                    "Tag": "Profesión",
+                    "Datatype": "String"
+                },
+                "Email":{
+                    "Tag": "Correo Electrónico",
+                    "Datatype": "String"
+                },
+                "OrigenCliente":{
+                    "Tag": "Llegó a consulta por",
+                    "Datatype": "String",
+                    "__COMMENT__": "Posiblemente haya que pulir esto en el futuro"
+                }
+            }
+        },
+        "Motivos":{
+            "Tag": "Motivo de consulta (problema principal)",
+            "contents":{
+                "TratamientoAnterior":{
+                    "Tag": "¿Has realizado algún tratamiento anterior relacionado con la alteración?",
+                    "Datatype": "Boolean",
+                    "Options":["Sí", "No"]
+                },
+                "IndiqueFechaLugar":{
+                    "Tag": "Indique fecha y lugar",
+                    "Datatype": "String"
+                },
+                "IndiqueResultado":{
+                    "Tag": "Resultado conseguido (óptimo, bueno, nulo)",
+                    "Datatype": "String"
+                },
+                "CuandoComenzoProblema":{
+                    "Tag": "¿Cuándo comenzó a notar este problema?",
+                    "Datatype": "Header"
+                },
+                "Tiempo":{
+                    "Tag": "Tiempo",
+                    "Datatype": "SelectChoice",
+                    "Options": ["Después pubertad", "Después embarazo", "Menopausia", "Debido a medicación", "Tras intervención"],
+                    "__COMMENT__": "Posiblemente haya que pulir esto en el futuro"
+                },
+                "FamiliaMismo":{
+                    "Tag": "Alguien de su familia padece este mismo trastorno",
+                    "Datatype": "String"
+                }
+            }
+        },
+        "Historial":{
+            "Tag": "Historial Estético",
+            "contents":{
+                "Medicamento":{
+                    "Tag": "Esta tomando algún medicamento? Indicar nombre",
+                    "Datatype": "String"
+                },
+                "Alergias":{
+                    "Tag": "Alergias a medicamentos, metales, alimentos o algún otro producto (indicar en caso afirmativo)",
+                    "Datatype": "String"
+                },
+                "AlergiasQuirurgicas":{
+                    "Tag": "Alguna enfermedad pasada/actual, intervención quirúrgica",
+                    "Datatype": "String"
+                },
+                "TrastornosPiel":{
+                    "Tag": "¿Presenta algún trastorno, problema o enfermedad en la piel?",
+                    "Datatype": "String"
+                },
+                "ImplanteMetalico":{
+                    "Tag": "¿Utiliza marcapasos o dispone de algún implamente o dispositivo metálico?",
+                    "Datatype": "String"
+                },
+                "DiabetesTiroides":{
+                    "Tag": "¿Le han confirmado diabetes, resistencia a la insulina o tiene algún problema de tiroides?",
+                    "Datatype": "String"
+                },
+                "TrastornoCirculatorio":{
+                    "Tag": "Presenta o ha presentado algún trastorno circulatorio, varices. (indicar en caso afirmativo)",
+                    "Datatype": "String"
+                },
+                "DificultadDormir":{
+                    "Tag": "Estrés, ansiedad, dificultad para dormir",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "HorasSueño":{
+                    "Tag": "Horas de sueño",
+                    "Datatype": "Number"
+                },
+                "EmbarazadaLactancia":{
+                    "Tag": "Embarazada o lactancia",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "Anticonceptivos":{
+                    "Tag": "Anticonceptivos orales o implantados",
+                    "Datatype": "Checklist",
+                    "Options": ["Oral", "Impt."]
+                },
+                "IngestaAgua":{
+                    "Tag": "Ingesta de agua",
+                    "Datatype": "SelectChoice",
+                    "Options": ["1L/dia", "1.5L/dia", "2L/dia"]
+                },
+                "Alimentacion":{
+                    "Tag": "Tipo de alimentación",
+                    "Datatype": "SelectChoice",
+                    "Options": ["Mediterránea", "Vegetariana", "Otras dietas"]
+                },
+                "Fritos":{
+                    "Tag": "Consumo de alimentos fritos",
+                    "Datatype": "SelectChoice",
+                    "Options": ["Muy frecuente", "Poco frecuente", "Nunca"]
+                },
+                "Gaseosas":{
+                    "Tag": "Bebidas gaseosas",
+                    "Datatype": "SelectChoice",
+                    "Options": ["Muy frecuente", "Poco frecuente", "Nunca"]
+                },
+                "Intestinal":{
+                    "Tag": "Transito intestinal",
+                    "Datatype": "SelectChoice",
+                    "Options": ["Estreñida", "Normal", "Muy activo"]
+                },
+                "Fumador":{
+                    "Tag": "Fumador",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "FumaCantidad":{
+                    "Tag": "Cantidad",
+                    "Datatype": "String"
+                },
+                "Alcohol":{
+                    "Tag": "Alcohol",
+                    "Datatype": "String"
+                },
+                "ActividadFisica":{
+                    "Tag": "¿Practica actividad fisica?",
+                    "Datatype": "SelectChoice",
+                    "Options": ["No", "2 V/S", "3 V/S", "5 V/S"]
+                }
+            }
+        },
+        "CuidadosPersonales":{
+            "Tag": "Cuidados Corporales Personales",
+            "contents":{
+                "TratamientoCabina":{
+                    "Tag": "Ha realizado algún tratamiento en cabina (indique tratamientos en caso afirmativo)",
+                    "Datatype": "String"
+                },
+                "FrecuenciaCabina":{
+                    "Tag": "Frecuencia de tratamientos en cabina",
+                    "Datatype": "SelectChoice",
+                    "Options":["1 vez mes", "Esporádico"]
+                },
+                "TratamientosRealizados":{
+                    "Tag":"¿Que tratamientos ha realizado?",
+                    "Datatype": "Checklist",
+                    "Options": ["Reductor", "Celulitis", "Reafirmante Estrías"]
+                },
+                "CosmeticosPiel":{
+                    "Tag":"¿Qué cosméticos o activos está utilizando actualmente en su piel?",
+                    "Datatype": "Checklist",
+                    "Options": ["Hidratación", "C. Reductor", "R. Celullitis", "Estrías", "Reafirmante", "C. Manos", "C. pies", "Exfoliante"]
+                },
+                "TrabajoAireLibre":{
+                    "Tag": "Trabaja al aire libre?",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "Quemadura":{
+                    "Tag": "¿Se quema con facilidad?",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "Enrojece":{
+                    "Tag": "¿Enrojece con cambios de temperatura?",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "ProteccionSolar":{
+                    "Tag": "¿Utiliza proteccion solar diaria?",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                },
+                "RayosUVA":{
+                    "Tag": "Toma Rayos UVA?",
+                    "Datatype": "Boolean",
+                    "Options": ["Si", "No"]
+                }
+            }
+        },
+        "RelacionCuerpo":{
+            "Tag": "Cuestionario de relación de cuerpo/ser",
+            "contents":{
+                "Instrucciones":{
+                    "Tag": "Instrucciones",
+                    "Datatype": "Bolded"
+                },
+                "InstruccionesText":{
+                    "Tag": "A continuación, encontrará una serie de preguntas acerca de cómo la gente piensa, siente o se comporta. Indique por favor su grado de acuerdo con cada afirmación con respecto a vd. No hay respuestas verdaderas o falsas. Dé la respuesta que más se ajuste a usted mismo.",
+                    "Datatype": "Header"
+                },
+                "InstruccionesTextFollowup":{
+                    "Tag": "Use la siguiente escala para puntuar las afirmaciones: 1 - Totalmente en desacuerdo. 2- Bastante en desacuerdo. 3 - Indiferente. 4- Bastante de acuerdo. 5 - Totalmente de acuerdo.",
+                    "Datatype": "Header"
+                },
+                "InstruccionesSincero":{
+                    "Tag": "Por favor sea lo más sincero posible. Gracias.",
+                    "Datatype": "Header"
+                },
+                "1":{
+                    "Tag": "Antes de estar en público siempre compruebo mi aspecto",
+                    "Datatype": "Number",
+                    "Range": [1,5]
+                },
+                "2":{
+                    "Tag": "Podría superar la mayoría de pruebas de estar en buena forma fisica",
+                    "Datatype": "Number",
+                    "Range": [1,5]
+                },
+                "3":{
+                    "Tag": "Para mi es mas importante tener mucha fuerza",
+                    "Datatype": "Number",
+                    "Range": [1,5]
+                },
+
+                "4": {
+                    "Tag": "Mi cuerpo es sexualmente atractivo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "5": {
+                    "Tag": "No hago ejercicio regularmente",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "6": {
+                    "Tag": "Sé mucho sobre las cosas que afectan a mi salud física",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "7": {
+                    "Tag": "Me preocupo constantemente de poder llegar a estar gordo/a",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "8": {
+                    "Tag": "Me gusta mi aspecto tal y como es",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "9": {
+                    "Tag": "Compruebo mi aspecto en un espejo siempre que puedo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "10": {
+                    "Tag": "Antes de salir invierto mucho tiempo en arreglarme",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "11": {
+                    "Tag": "Tengo una buena capacidad de resistencia física",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "12": {
+                    "Tag": "Participar en deportes no es importante para mi",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "13": {
+                    "Tag": "No hago cosas que me mantengan en forma",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "14": {
+                    "Tag": "Tener buena salud es una de las cosas más importantes para mi",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "15": {
+                    "Tag": "Soy muy consciente de cambios en mi peso aunque sean pequeños",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "16": {
+                    "Tag": "Casi todo el mundo me considera guapo/a",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "17": {
+                    "Tag": "Es importante para mi que mi aspecto sea siempre bueno",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "18": {
+                    "Tag": "Adquiero fácilmente nuevas habilidades físicas",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "19": {
+                    "Tag": "Estar en forma no es una prioridad en mi vida",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "20": {
+                    "Tag": "Hago cosas que aumenten mi fuerza física",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "21": {
+                    "Tag": "Raramente estoy enfermo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "22": {
+                    "Tag": "A menudo leo libros y revistas de salud",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "23": {
+                    "Tag": "Me gusta el aspecto de mi cuerpo sin ropa",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "24": {
+                    "Tag": "No soy bueno en deportes o juegos",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "25": {
+                    "Tag": "Raramente pienso en mis aptitudes deportivas",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "26": {
+                    "Tag": "Me esfuerzo en mejorar mi resistencia física",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "27": {
+                    "Tag": "No me preocupo de llevar una dieta equilibrada",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "28": {
+                    "Tag": "Me gusta como me sienta la ropa",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "29": {
+                    "Tag": "Presto especial atención al cuidado de mi pelo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "30": {
+                    "Tag": "No le doy importancia a mejorar mis habilidades en actividades físicas",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "31": {
+                    "Tag": "Trato de estar físicamente activo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "32": {
+                    "Tag": "Presto atención a cualquier signo que indique que puedo estar enfermo",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "33": {
+                    "Tag": "Nunca pienso en mi aspecto",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "34": {
+                    "Tag": "Siempre trato de mejorar mi aspecto físico",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "35": {
+                    "Tag": "Me muevo de forma armónica y coordinada",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "36": {
+                    "Tag": "Sé mucho sobre cómo estar bien físicamente",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "37": {
+                    "Tag": "Hago deporte regularmente a lo largo del año",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "38": {
+                    "Tag": "Soy muy consciente de pequeños cambios en mi salud",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "39": {
+                    "Tag": "Al primer signo de enfermedad voy al médico",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "InstruccionesCuerpo":{
+                    "Tag": "Use una escala del 1 al 5 para mostrar el grado de satisfacción o insatisfacción con cada una de las partes del cuerpo que aparecen a continuación, siendo 1 'muy insatisfecho' y 5 'muy satisfecho'",
+                    "Datatype": "Header"
+                },
+                "InferiorCuerpo":{
+                    "Tag": "Parte inferior del cuerpo, (nalgas, muslos, piernas, pies)",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "MedioCuerpo":{
+                    "Tag": "Parte media del cuerpo, (abdomen y estómago)",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "SuperiorCuerpo":{
+                    "Tag": "Parte superior del cuerpo (pecho, hombros, brazos)",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "MuscularCuerpo":{
+                    "Tag": "Tono muscular",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "PesoCuerpo":{
+                    "Tag": "Peso",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                },
+                "GeneralCuerpo":{
+                    "Tag": "Aspecto general",
+                    "Datatype": "Number",
+                    "Range": [1, 5]
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ interface FilterMenuProps{
     checkboxInit: (string | undefined)[];
 }
 
-const categorias = ["Mapas", "Personajes", "Objetos", "Criaturas", "Hechizos", "Misc"];
+const categorias = ["Clientes", "Proveedores", "Incidencias", "Misc"];
 
 const FilterMenu = (props:FilterMenuProps) =>{
     const [checkedState, setCheckedState] = useState(
