@@ -2,6 +2,7 @@
     "Secciones":{
         "Cabecera":{
             "Tag": "Formulario del cliente",
+            "Class": "header",
             "contents":{
                 "NombreTecnico":{
                     "Tag": "Técnico de evaluación",
@@ -9,12 +10,14 @@
                 },
                 "NumHistoria":{
                     "Tag": "Nº Historia",
-                    "Datatype": "Number"
+                    "Datatype": "String",
+                    "__COMMENT__":"Posiblemente haya que pulir esto en el futuro"
                 }
             }
         },
         "DatosPersonales":{
             "Tag":"Datos Personales",
+            "Class": "datosPersonales",
             "contents":{
                 "NombreApellidos":{
                     "Tag": "Nombre y Apellidos",
@@ -26,7 +29,8 @@
                 },
                 "NumContacto":{
                     "Tag": "Teléfono de contacto",
-                    "Datatype": "Number"
+                    "Datatype": "String",
+                    "__COMMENT__":"Posiblemente haya que pulir esto en el futuro"
                 },
                 "Direccion":{
                     "Tag": "Dirección",
@@ -49,10 +53,11 @@
         },
         "Motivos":{
             "Tag": "Motivo de consulta (problema principal)",
+            "Class": "motivos",
             "contents":{
                 "TratamientoAnterior":{
                     "Tag": "¿Has realizado algún tratamiento anterior relacionado con la alteración?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options":["Sí", "No"]
                 },
                 "IndiqueFechaLugar":{
@@ -81,6 +86,7 @@
         },
         "Historial":{
             "Tag": "Historial Estético",
+            "Class": "historial",
             "contents":{
                 "Medicamento":{
                     "Tag": "Esta tomando algún medicamento? Indicar nombre",
@@ -112,7 +118,7 @@
                 },
                 "DificultadDormir":{
                     "Tag": "Estrés, ansiedad, dificultad para dormir",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "HorasSueño":{
@@ -121,7 +127,7 @@
                 },
                 "EmbarazadaLactancia":{
                     "Tag": "Embarazada o lactancia",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "Anticonceptivos":{
@@ -131,32 +137,32 @@
                 },
                 "IngestaAgua":{
                     "Tag": "Ingesta de agua",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["1L/dia", "1.5L/dia", "2L/dia"]
                 },
                 "Alimentacion":{
                     "Tag": "Tipo de alimentación",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["Mediterránea", "Vegetariana", "Otras dietas"]
                 },
                 "Fritos":{
                     "Tag": "Consumo de alimentos fritos",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["Muy frecuente", "Poco frecuente", "Nunca"]
                 },
                 "Gaseosas":{
                     "Tag": "Bebidas gaseosas",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["Muy frecuente", "Poco frecuente", "Nunca"]
                 },
                 "Intestinal":{
                     "Tag": "Transito intestinal",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["Estreñida", "Normal", "Muy activo"]
                 },
                 "Fumador":{
                     "Tag": "Fumador",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "FumaCantidad":{
@@ -169,13 +175,14 @@
                 },
                 "ActividadFisica":{
                     "Tag": "¿Practica actividad fisica?",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options": ["No", "2 V/S", "3 V/S", "5 V/S"]
                 }
             }
         },
         "CuidadosPersonales":{
             "Tag": "Cuidados Corporales Personales",
+            "Class": "cuidadosPersonales",
             "contents":{
                 "TratamientoCabina":{
                     "Tag": "Ha realizado algún tratamiento en cabina (indique tratamientos en caso afirmativo)",
@@ -183,7 +190,7 @@
                 },
                 "FrecuenciaCabina":{
                     "Tag": "Frecuencia de tratamientos en cabina",
-                    "Datatype": "SelectChoice",
+                    "Datatype": "Radio",
                     "Options":["1 vez mes", "Esporádico"]
                 },
                 "TratamientosRealizados":{
@@ -198,33 +205,34 @@
                 },
                 "TrabajoAireLibre":{
                     "Tag": "Trabaja al aire libre?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "Quemadura":{
                     "Tag": "¿Se quema con facilidad?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "Enrojece":{
                     "Tag": "¿Enrojece con cambios de temperatura?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "ProteccionSolar":{
                     "Tag": "¿Utiliza proteccion solar diaria?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 },
                 "RayosUVA":{
                     "Tag": "Toma Rayos UVA?",
-                    "Datatype": "Boolean",
+                    "Datatype": "Radio",
                     "Options": ["Si", "No"]
                 }
             }
         },
         "RelacionCuerpo":{
             "Tag": "Cuestionario de relación de cuerpo/ser",
+            "Class": "relacionCuerpo",
             "contents":{
                 "Instrucciones":{
                     "Tag": "Instrucciones",
@@ -244,199 +252,198 @@
                 },
                 "1":{
                     "Tag": "Antes de estar en público siempre compruebo mi aspecto",
-                    "Datatype": "Number",
-                    "Range": [1,5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "2":{
                     "Tag": "Podría superar la mayoría de pruebas de estar en buena forma fisica",
-                    "Datatype": "Number",
-                    "Range": [1,5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "3":{
                     "Tag": "Para mi es mas importante tener mucha fuerza",
-                    "Datatype": "Number",
-                    "Range": [1,5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
-
                 "4": {
                     "Tag": "Mi cuerpo es sexualmente atractivo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "5": {
                     "Tag": "No hago ejercicio regularmente",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "6": {
                     "Tag": "Sé mucho sobre las cosas que afectan a mi salud física",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "7": {
                     "Tag": "Me preocupo constantemente de poder llegar a estar gordo/a",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "8": {
                     "Tag": "Me gusta mi aspecto tal y como es",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "9": {
                     "Tag": "Compruebo mi aspecto en un espejo siempre que puedo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "10": {
                     "Tag": "Antes de salir invierto mucho tiempo en arreglarme",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "11": {
                     "Tag": "Tengo una buena capacidad de resistencia física",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "12": {
                     "Tag": "Participar en deportes no es importante para mi",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "13": {
                     "Tag": "No hago cosas que me mantengan en forma",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "14": {
                     "Tag": "Tener buena salud es una de las cosas más importantes para mi",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "15": {
                     "Tag": "Soy muy consciente de cambios en mi peso aunque sean pequeños",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "16": {
                     "Tag": "Casi todo el mundo me considera guapo/a",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "17": {
                     "Tag": "Es importante para mi que mi aspecto sea siempre bueno",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "18": {
                     "Tag": "Adquiero fácilmente nuevas habilidades físicas",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "19": {
                     "Tag": "Estar en forma no es una prioridad en mi vida",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "20": {
                     "Tag": "Hago cosas que aumenten mi fuerza física",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "21": {
                     "Tag": "Raramente estoy enfermo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "22": {
                     "Tag": "A menudo leo libros y revistas de salud",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "23": {
                     "Tag": "Me gusta el aspecto de mi cuerpo sin ropa",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "24": {
                     "Tag": "No soy bueno en deportes o juegos",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "25": {
                     "Tag": "Raramente pienso en mis aptitudes deportivas",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "26": {
                     "Tag": "Me esfuerzo en mejorar mi resistencia física",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "27": {
                     "Tag": "No me preocupo de llevar una dieta equilibrada",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "28": {
                     "Tag": "Me gusta como me sienta la ropa",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "29": {
                     "Tag": "Presto especial atención al cuidado de mi pelo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "30": {
                     "Tag": "No le doy importancia a mejorar mis habilidades en actividades físicas",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "31": {
                     "Tag": "Trato de estar físicamente activo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "32": {
                     "Tag": "Presto atención a cualquier signo que indique que puedo estar enfermo",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "33": {
                     "Tag": "Nunca pienso en mi aspecto",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "34": {
                     "Tag": "Siempre trato de mejorar mi aspecto físico",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "35": {
                     "Tag": "Me muevo de forma armónica y coordinada",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "36": {
                     "Tag": "Sé mucho sobre cómo estar bien físicamente",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "37": {
                     "Tag": "Hago deporte regularmente a lo largo del año",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "38": {
                     "Tag": "Soy muy consciente de pequeños cambios en mi salud",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "39": {
                     "Tag": "Al primer signo de enfermedad voy al médico",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "InstruccionesCuerpo":{
                     "Tag": "Use una escala del 1 al 5 para mostrar el grado de satisfacción o insatisfacción con cada una de las partes del cuerpo que aparecen a continuación, siendo 1 'muy insatisfecho' y 5 'muy satisfecho'",
@@ -444,33 +451,33 @@
                 },
                 "InferiorCuerpo":{
                     "Tag": "Parte inferior del cuerpo, (nalgas, muslos, piernas, pies)",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "MedioCuerpo":{
                     "Tag": "Parte media del cuerpo, (abdomen y estómago)",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "SuperiorCuerpo":{
                     "Tag": "Parte superior del cuerpo (pecho, hombros, brazos)",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "MuscularCuerpo":{
                     "Tag": "Tono muscular",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "PesoCuerpo":{
                     "Tag": "Peso",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 },
                 "GeneralCuerpo":{
                     "Tag": "Aspecto general",
-                    "Datatype": "Number",
-                    "Range": [1, 5]
+                    "Datatype": "Radio",
+                    "Options": [1,2,3,4,5]
                 }
             }
         }

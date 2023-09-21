@@ -113,8 +113,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ParsedForm/>
-      <DynamicForm data={theFile}/>
+      <div className={styles.testing}>
+        <DynamicForm data={theFile}/>
+      </div>
       <div className={styles.header}>
           <h2 className={styles.logo}>Lorevault</h2>
           <SearchBar sendSearchValue={grabSearchValue} initialValue={query} generateLink={generateLink}/>

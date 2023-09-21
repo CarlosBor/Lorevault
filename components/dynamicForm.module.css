@@ -1,0 +1,21 @@
+.label{
+    margin-left: 50px;
+    margin-right: 50px;
+    display:inline-block;
+    width:500px;
+}
+
+.parentDiv:focus-within {
+    background-color: rgb(24, 44, 51); /* Change the background color as needed */
+  }
+
+.radioDiv{
+    display:inline-flex;
+    width:100%;
+    padding-right:45px;
+}
+.radioContainer{
+    display:inline-flex;
+    flex-grow:1;
+    justify-content: space-around;
+}

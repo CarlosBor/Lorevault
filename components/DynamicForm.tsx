@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import styles from './dynamicForm.module.css';
 
 //JS can't tell the formatting of a json file so data ought to be "any" type
 const DynamicForm = ({data}:any) => {
   const [formData, setFormData] = useState({});
 
   //The event is used for different types of forms, so rather than using 3 different types for the event itself I'd rather set it as "any"
+  //Updates formData when values in the fields are changed
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     setFormData({
@@ -13,15 +15,16 @@ const DynamicForm = ({data}:any) => {
     });
   };
 
+  //A function that takes keys and data and returns the type of HTML structure to be returned, depending on Datatype.
   const renderFormField = (fieldKey:string, fieldData:any) => {
     const { Tag, Datatype, Options } = fieldData;
     switch (Datatype) {
+      //String and Date fall under the same structure, only the type changes.
       case 'String':
       case 'Date':
-      case 'Number':
         return (
-          <div key={fieldKey}>
-            <label htmlFor={fieldKey}>{Tag}</label>
+          <div key={fieldKey} className={`${styles.parentDiv}`}>
+            <label htmlFor={fieldKey} className={`${styles.label} ${styles.another}`}>{Tag}:</label>
             <input
               type={Datatype.toLowerCase()}
               name={fieldKey}
@@ -31,10 +34,24 @@ const DynamicForm = ({data}:any) => {
             />
           </div>
         );
-      case 'Boolean':
+      case 'Number':
         return (
           <div key={fieldKey}>
-            <label>{Tag}</label>
+            <label htmlFor={fieldKey} className={`${styles.label}`}>{Tag}</label>
+            <input
+              type={Datatype.toLowerCase()}
+              name={fieldKey}
+              id={fieldKey}
+              onChange={handleInputChange}
+              value={formData[fieldKey] || ''}
+            />
+          </div>
+        );
+      case 'Radio':
+        return (
+          <div key={fieldKey} className={`${styles.radioDiv}`}>
+            <label className={`${styles.label}`}>{Tag}</label>
+            <div className={`${styles.radioContainer}`}>
             {Options.map((option:string) => (
               <label key={option}>
                 <input
@@ -47,12 +64,13 @@ const DynamicForm = ({data}:any) => {
                 {option}
               </label>
             ))}
+            </div>
           </div>
         );
       case 'Checklist':
         return (
           <div key={fieldKey}>
-            <label>{Tag}</label>
+            <label className={`${styles.label}`}>{Tag}</label>
             {Options.map((option:string) => (
               <label key={option}>
                 <input
@@ -70,7 +88,7 @@ const DynamicForm = ({data}:any) => {
       case 'SelectChoice':
         return (
           <div key={fieldKey}>
-            <label>{Tag}</label>
+            <label className={`${styles.label}`}>{Tag}</label>
             <select
               name={fieldKey}
               onChange={handleInputChange}
@@ -95,9 +113,9 @@ const DynamicForm = ({data}:any) => {
   };
 
   const renderSection = (sectionData:any) => {
-    const { Tag, contents } = sectionData;
+    const { Tag, Class, contents } = sectionData;
     return (
-      <div key={Tag}>
+      <div key={Tag} className={styles[Class]}>
         <h1>{Tag}</h1>
         {Object.entries(contents).map(([key, value]) =>
           renderFormField(key, value)
@@ -107,7 +125,7 @@ const DynamicForm = ({data}:any) => {
   };
 
   return (
-    <form>
+    <form className={styles.form}>
       {Object.entries(data.Secciones).map(([sectionKey, sectionData]) =>
         renderSection(sectionData)
       )}
